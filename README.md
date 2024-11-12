@@ -54,19 +54,25 @@ npx cypress open
 
 > Essa é uma estrutura básica, pode ser modificada conforme necessidade.
 
+
+### Instalar o cypress-file-upload, siga estes passos:
+
+Instale a biblioteca usando o npm com o seguinte comando:
+```
+npm install --save-dev cypress-file-upload
+```
+Importe o plugin no arquivo de configuração do Cypress. Abra o arquivo cypress/support/commands.js e adicione esta linha:
+
+```
+import 'cypress-file-upload';
+```
 ### Cenários de Teste
-
-
 
 ## Estrutura do Projeto
 
 DESAFIOTECH01/
 
-
-
 ### Descrição das Pastas e Arquivos
-
-
 
 ## Execução dos Testes
 

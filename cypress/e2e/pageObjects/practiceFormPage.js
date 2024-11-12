@@ -26,32 +26,15 @@ class PracticeFormPage {
     fillPhoneNumber(phoneNumber) {
         cy.get('#userNumber').type(phoneNumber);
     }
-/*
+
     setDateOfBirth(year, month, day) {
-        cy.get('#dateOfBirthInput').click();
-        cy.get('.react-datepicker__month-container').should('be.visible');  // Garante que o calendário está visível   
+        cy.get('#dateOfBirthInput').click(); // Abre o seletor de data
         cy.get('.react-datepicker__year-select').select(year.toString());
         cy.get('.react-datepicker__month-select').select(month.toString());
-        cy.get('react-datepicker__day react-datepicker__day--020').click();
-
-        //const dayWithLeadingZero = day < 10 ? `0${day}` : day.toString();
-        //cy.get(`.react-datepicker__day--${dayWithLeadingZero}`, { timeout: 10000 })
-          //.not('.react-datepicker__day--outside-month') // Garante que o dia é do mês atual
-          //.should('be.visible')  // Aguarda o dia estar visível
-          //.click();
-    }
-    */
-
-    setDateOfBirth(year, month, day) {
-        cy.get('#dob')  // Identificador do campo de data de nascimento
-            .click();  // Abre o seletor de data
-        cy.get('.react-datepicker__year-select').select(year);  // Seleciona o ano
-        cy.get('.react-datepicker__month-select').select(month);  // Seleciona o mês
-        cy.get('.react-datepicker__day--0' + day).click();  // Seleciona o dia
-        }
+        cy.get(`.react-datepicker__day--0${day}`).not('.react-datepicker__day--outside-month').click();
     }
 
-    selectHobbies(hobbies) {
+    selectHobbies(...hobbies) {
         hobbies.forEach(hobby => {
             cy.get(`#hobbies-checkbox-${hobby}`).check({ force: true });
         });
@@ -59,7 +42,6 @@ class PracticeFormPage {
 
     uploadFile(fileName) {
         cy.get('#uploadPicture').attachFile(fileName);
-        cy.wait(2000);
     }
 
     fillAddress(address) {
@@ -86,10 +68,9 @@ class PracticeFormPage {
 
     closePopup() {
         cy.get('#closeLargeModal').click({ force: true });
-        cy.url().should('include', 'pcs/activeview');
+        cy.url().should('include', '/automation-practice-form');
     }
 
-    // Métodos de dados aleatórios
     getRandomFirstName() {
         const firstNames = ['Alice', 'Bob', 'Charlie', 'David', 'Eva'];
         return firstNames[Math.floor(Math.random() * firstNames.length)];
@@ -115,7 +96,7 @@ class PracticeFormPage {
     getRandomDateOfBirth() {
         const year = Math.floor(Math.random() * 30) + 1980;
         const month = Math.floor(Math.random() * 12);
-        const day = Math.floor(Math.random() * 30);
+        const day = Math.floor(Math.random() * 28) + 1; // Limita o dia entre 1 e 28 para evitar problemas com meses curtos
         return { year, month, day };
     }
 
