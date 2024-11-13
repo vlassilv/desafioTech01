@@ -68,11 +68,123 @@ import 'cypress-file-upload';
 ```
 ### Cenários de Teste
 
+#### - Feature: Test Browser Windows Page
+#### Scenario: Open a new window and verify its contents
+    Given I am on the demoqa homepage
+    When I navigate to Alerts, Frame & Windows
+    And I click on Browser Windows
+    And I open a new window
+    Then I verify the new window contains "This is a sample page"
+    And I close the new window
+
+#### - Feature: Test Form Page
+#### Scenario: Fill and submit the practice form
+    Given I am on the demoqa homepage  
+    When I navigate to the Forms section  
+    And I click on Practice Form
+    And I fill out the form with random data
+    And I upload a .txt file
+    Then I submit the form
+    And I verify that a popup appears
+    And I close the popup
+
+#### - Feature: Test Progress Bar
+#### Scenario: Validate Progress Bar value
+    Given I am on the demoqa homepage
+    When I navigate to Widgets
+    And I click on Progress Bar
+    And I start the progress bar
+    And I stop it before 25%
+    Then I validate that the progress bar value is less than or equal to 25%
+    And I start the progress bar again
+    And I wait until it reaches 100% and reset the progress bar
+
+#### - Feature: Test Sortable Interaction
+#### Scenario: Verify sorting functionality
+    Given I am on the demoqa homepage
+    When I navigate to Interactions
+    And I click on Sortable
+    Then I sort the list items
+    And verify that items are in the new order
+
+#### - Feature: Test Web Tables Page
+#### Scenario: Add, edit, and delete a record in Web Tables
+    Given I am on the demoqa homepage
+    When I navigate to Elements
+    And I click on Web Tables
+    And I create a new record
+    And I edit the new record
+    And I delete the new record
+    Then I dynamically create 12 records using Cucumber
+    And I delete all the created records
+
 ## Estrutura do Projeto
 
-DESAFIOTECH01/
+desafioTech01/
+│
+├── cypress/
+│   │
+│   ├── e2e/
+│   │   │
+│   │   ├── features/
+│   │   │
+│   │   │    ├── webTables.feature           # Arquivo .feature com cenários de teste para Web Tables
+│   │   │    │
+│   │   │    └── progressBar.feature         # Arquivo .feature com cenários de teste para Progress Bar
+│   │   │
+│   │   ├── pageObjects/
+│   │   │   │
+│   │   │   ├── webTablesPage.js            # Page Object para interagir com elementos da página Web Tables
+│   │   │   │
+│   │   │   └── progressBarPage.js          # Page Object para interagir com elementos da página Progress Bar
+│   │   │
+│   │   └── step_definitions/
+│   │       │
+│   │       ├── webTablesSteps.js           # Arquivo de steps para o teste de Web Tables
+│   │       │
+│   │       └── progressBarSteps.js         # Arquivo de steps para o teste de Progress Bar
+│   │ 
+│   ├── fixtures/                           # Pasta para armazenar dados de teste fixos
+│   │   │
+│   │   └── exampleData.json                # Exemplo de arquivo JSON com dados de teste (opcional)
+│   │
+│   └── support/
+│       │
+│       ├── commands.js                     # Custom commands para o Cypress
+│       │
+│       └── e2e.js                          # Configurações e eventos globais do Cypress 
+│ 
+├── cypress.config.js                   # Configuração principal do Cypress, incluindo specPattern
+│ 
+├── node_modules/                           # Dependências do projeto (gerado pelo npm)
+│ 
+├── .gitignore                              # Arquivo para ignorar arquivos e pastas desnecessárias no Git
+│ 
+├── package.json                            # Gerenciamento de dependências do projeto
+│ 
+└── README.md                               # Documentação do projeto (opcional)
 
 ### Descrição das Pastas e Arquivos
+
+- cypress/e2e/features/: Contém arquivos .feature onde cada arquivo define um conjunto de cenários de teste em Gherkin.
+
+- cypress/e2e/step_definitions/: Contém arquivos .js que implementam os steps descritos nos arquivos .feature. Cada arquivo de steps implementa um ou mais cenários específicos para uma funcionalidade.
+
+- cypress/support/pageObjects/: Contém arquivos JavaScript que definem os Page Objects. Cada arquivo aqui representa uma página ou componente específico da aplicação e contém métodos para interagir com elementos dessa página.
+
+- cypress/fixtures/: Contém arquivos .json com dados de teste que podem ser usados em testes para fornecer dados de entrada consistentes.
+
+- cypress/support/commands.js: Arquivo para comandos personalizados do Cypress que podem ser usados em diferentes testes.
+
+- cypress/support/e2e.js: Configurações e eventos globais do Cypress.
+
+- cypress.config.js: Configuração principal do Cypress, onde você define o caminho do specPattern e outras opções de configuração.
+
+- package.json: Arquivo de configuração do npm que contém as dependências e scripts do projeto.
+
+- .gitignore: Arquivo para especificar quais arquivos e pastas o Git deve ignorar.
+
+- README.md: Arquivo opcional para documentar o projeto, instruindo outros usuários sobre como configurar e executar os testes.
 
 ## Execução dos Testes
 
