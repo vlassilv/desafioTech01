@@ -120,49 +120,69 @@ import 'cypress-file-upload';
 
 ## Estrutura do Projeto
 
-desafioTech01/
-│
-├── cypress/
-│   │
-│   ├── e2e/
-│   │   │
-│   │   ├── features/
-│   │   │
-│   │   │    ├── webTables.feature           # Arquivo .feature com cenários de teste para Web Tables
-│   │   │    │
-│   │   │    └── progressBar.feature         # Arquivo .feature com cenários de teste para Progress Bar
-│   │   │
-│   │   ├── pageObjects/
-│   │   │   │
-│   │   │   ├── webTablesPage.js            # Page Object para interagir com elementos da página Web Tables
-│   │   │   │
-│   │   │   └── progressBarPage.js          # Page Object para interagir com elementos da página Progress Bar
-│   │   │
-│   │   └── step_definitions/
-│   │       │
-│   │       ├── webTablesSteps.js           # Arquivo de steps para o teste de Web Tables
-│   │       │
-│   │       └── progressBarSteps.js         # Arquivo de steps para o teste de Progress Bar
-│   │ 
-│   ├── fixtures/                           # Pasta para armazenar dados de teste fixos
-│   │   │
-│   │   └── exampleData.json                # Exemplo de arquivo JSON com dados de teste (opcional)
-│   │
-│   └── support/
-│       │
-│       ├── commands.js                     # Custom commands para o Cypress
-│       │
-│       └── e2e.js                          # Configurações e eventos globais do Cypress 
-│ 
-├── cypress.config.js                   # Configuração principal do Cypress, incluindo specPattern
-│ 
-├── node_modules/                           # Dependências do projeto (gerado pelo npm)
-│ 
-├── .gitignore                              # Arquivo para ignorar arquivos e pastas desnecessárias no Git
-│ 
-├── package.json                            # Gerenciamento de dependências do projeto
-│ 
-└── README.md                               # Documentação do projeto (opcional)
+    desafioTech01/
+
+        ├── cypress/
+
+            ├── e2e/
+
+                ├── features/
+
+                    ├── browserWindows.feature      # Arquivo .feature com cenários de teste para Browser Windows
+
+                    ├── formPage.feature            # Arquivo .feature com cenários de teste para Form Page
+
+                    ├── progressBar.feature         # Arquivo .feature com cenários de teste para Progress Bar
+
+                    ├── sortable.feature            # Arquivo .feature com cenários de teste para Sortable
+
+                    └── webTables.feature           # Arquivo .feature com cenários de teste para Web Tables
+
+                ├── pageObjects/
+
+                    ├── browserWindowsPage.js       # Page Object para interagir com elementos da página Browser Windows
+
+                    ├── formPage.js                 # Page Object para interagir com elementos da página Form Page
+
+                    ├── homePage.js                 # Page Object para interagir com elementos da página Home Page
+
+                    ├── progressBarPage.js          # Page Object para interagir com elementos da página Progress Bar
+
+                    ├── sortablePage.js             # Page Object para interagir com elementos da página Sortable
+
+                    └── webTablesPage.js            # Page Object para interagir com elementos da página Web Tables
+
+                └── step_definitions/
+
+                    ├── browserWindows.js           # Arquivo de steps para o teste de Web Tables
+
+                    ├── formPage.js                 # Arquivo de steps para o teste de Web Tables
+
+                    ├── progressBar.js              # Arquivo de steps para o teste de Web Tables
+
+                    ├── sortable.js                 # Arquivo de steps para o teste de Web Tables
+
+                    └── webTables.js                # Arquivo de steps para o teste de Progress Bar
+
+            ├── fixtures/                           # Pasta para armazenar dados de teste fixos
+
+                └── fileUpload.txt                  # Arquivo de texto para upload
+
+            ├── support/
+
+                ├── commands.js                     # Custom commands para o Cypress
+
+                └── e2e.js                          # Configurações e eventos globais do Cypress
+
+        ├── cypress.config.js                   # Configuração principal do Cypress, incluindo specPattern
+
+        ├── node_modules/                           # Dependências do projeto (gerado pelo npm)
+
+        ├── .gitignore                              # Arquivo para ignorar arquivos e pastas desnecessárias no Git
+
+        ├── package.json                            # Gerenciamento de dependências do projeto
+
+        └── README.md                               # Documentação do projeto (opcional)
 
 ### Descrição das Pastas e Arquivos
 

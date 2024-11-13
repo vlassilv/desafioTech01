@@ -52,7 +52,7 @@ class FormPage {
   }
 
   uploadTxtFile() {
-    this.uploadInput.attachFile('sample.txt'); // O arquivo sample.txt deve estar na pasta cypress/fixtures
+    this.uploadInput.attachFile('fileUpload.txt'); // O arquivo fileUpload.txt estar na pasta cypress/fixtures
   }
 
   submitForm() {
