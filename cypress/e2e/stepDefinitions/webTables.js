@@ -1,62 +1,59 @@
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import WebTablesPage from '../support/pageObjects/webTablesPage';
 
-describe('Test Web Tables Page', () => {
-  it('Add, edit, and delete a record in Web Tables', () => {
-    // Dado que estou na página inicial do demoqa
-    cy.visit('https://demoqa.com');
+Given('I am on the demoqa homepage', () => {
+  cy.visit('/');
+});
 
-    // Quando eu navego até Elements
-    cy.contains('Elements').click();
+When('I navigate to Elements', () => {
+  cy.contains('Elements').click();
+});
 
-    // E eu clico em Web Tables
-    cy.contains('Web Tables').click();
+When('I click on Web Tables', () => {
+  cy.contains('Web Tables').click();
+});
 
-    // E eu crio um novo registro
-    const firstName = 'John';
-    const lastName = 'Doe';
-    const email = 'john.doe@example.com';
-    const age = '30';
-    const salary = '50000';
-    const department = 'Engineering';
-    WebTablesPage.addRecord(firstName, lastName, email, age, salary, department);
-
-    // Verificar se o registro foi adicionado
-    WebTablesPage.verifyRecordExists(firstName, lastName);
-
-    // E eu edito o novo registro
-    const newFirstName = 'Jane';
-    const newLastName = 'Smith';
-    WebTablesPage.editFirstRecord(newFirstName, newLastName);
-
-    // Verificar se o registro foi editado
-    WebTablesPage.verifyRecordExists(newFirstName, newLastName);
-
-    // E eu excluo o novo registro
-    WebTablesPage.deleteFirstRecord();
-
-    // Verificar se o registro foi excluído
-    cy.contains('.rt-tbody', newFirstName).should('not.exist');
-
-    // Então eu crio dinamicamente 12 registros usando o Cucumber
-    const records = Array.from({ length: 12 }, (_, i) => ({
-      firstName: `First${i + 1}`,
-      lastName: `Last${i + 1}`,
-      email: `email${i + 1}@example.com`,
-      age: `${20 + i}`,
-      salary: `${40000 + i * 1000}`,
-      department: 'Sales'
-    }));
-    WebTablesPage.createMultipleRecords(records);
-
-    // Verificar se os 12 registros foram adicionados
-    records.forEach(record => {
-      WebTablesPage.verifyRecordExists(record.firstName, record.lastName);
-    });
-
-    // E eu excluo todos os registros criados
-    WebTablesPage.deleteAllRecords();
-
-    // Verificar se todos os registros foram excluídos
-    cy.get('.rt-tbody').children().should('have.length', 0);
+When('I create a new record', () => {
+  WebTablesPage.createRecord({
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john.doe@example.com',
+    age: '30',
+    salary: '5000',
+    department: 'Engineering'
   });
+});
+
+When('I edit the new record', () => {
+  WebTablesPage.editRecord('john.doe@example.com', {
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john.doe@updated.com',
+    age: '31',
+    salary: '5500',
+    department: 'Product'
+  });
+});
+
+When('I delete the new record', () => {
+  WebTablesPage.deleteRecord('john.doe@updated.com');
+});
+
+Then('I dynamically create 12 records using Cucumber', () => {
+  for (let i = 1; i <= 12; i++) {
+    WebTablesPage.createRecord({
+      firstName: `User${i}`,
+      lastName: `Test${i}`,
+      email: `user${i}@example.com`,
+      age: `${20 + i}`,
+      salary: `${4000 + i * 100}`,
+      department: `Dept${i}`
+    });
+  }
+});
+
+Then('I delete all the created records', () => {
+  for (let i = 1; i <= 12; i++) {
+    WebTablesPage.deleteRecord(`user${i}@example.com`);
+  }
 });

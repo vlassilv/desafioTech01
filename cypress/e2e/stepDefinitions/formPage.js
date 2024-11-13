@@ -1,3 +1,4 @@
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import formPage from '../pageObjects/formPage';
 
 Given('I am on the demoqa homepage', () => {

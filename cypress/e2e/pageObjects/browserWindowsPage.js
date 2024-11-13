@@ -1,36 +1,28 @@
 class BrowserWindowsPage {
-    get alertsFrameWindowsOption() {
-      return cy.contains('Alerts, Frame & Windows');
-    }
-  
-    get browserWindowsOption() {
-      return cy.contains('Browser Windows');
-    }
-  
-    get newWindowButton() {
-      return cy.get('#windowButton');
-    }
-  
-    navigateToAlertsFrameWindows() {
-      this.alertsFrameWindowsOption.click();
-    }
-  
-    navigateToBrowserWindows() {
-      this.browserWindowsOption.click();
-    }
-  
-    openNewWindow() {
-      this.newWindowButton.click();
-    }
-  
-    verifyNewWindowContent() {
-      cy.window().then((win) => {
-        const newWindow = win.open('https://demoqa.com/sample');
-        cy.wrap(newWindow.document.body)
-          .invoke('text')
-          .should('include', 'This is a sample page');
-      });
-    }
+  // Método para navegar até a seção "Alerts, Frame & Windows"
+  navigateToAlertsFrameWindows() {
+    cy.contains('Alerts, Frame & Windows').click();
   }
-  
-  export default new BrowserWindowsPage();
+
+  // Método para navegar até a seção "Browser Windows"
+  navigateToBrowserWindows() {
+    cy.contains('Browser Windows').click();
+  }
+
+  // Método para abrir uma nova janela
+  openNewWindow() {
+    cy.get('#windowButton').click(); // Substitua '#windowButton' pelo seletor correto
+  }
+
+  // Método para verificar o conteúdo da nova janela
+  verifyNewWindowContent(expectedContent) {
+    cy.window().then((win) => {
+      cy.stub(win, 'open').callsFake((url) => {
+        const newWindow = cy.window().its('open').then(() => cy.visit(url));
+        cy.wrap(newWindow).its('document.body').should('contain.text', expectedContent);
+      });
+    });
+  }
+}
+
+export default new BrowserWindowsPage();

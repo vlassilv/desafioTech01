@@ -66,6 +66,16 @@ Importe o plugin no arquivo de configuração do Cypress. Abra o arquivo cypress
 ```
 import 'cypress-file-upload';
 ```
+### Instalar as dependências para integrar o Cucumber com o Cypress:
+```
+npm install cypress-cucumber-preprocessor --save-dev
+npm install @cypress/xpath --save-dev
+```
+### Instalar pacote do cypress-cucumber-preprocessor:
+```
+npm install @badeball/cypress-cucumber-preprocessor --save-dev
+```
+
 ### Cenários de Teste
 
 #### - Feature: Test Browser Windows Page

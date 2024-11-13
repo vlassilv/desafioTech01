@@ -1,3 +1,4 @@
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import browserWindowsPage from '../pageObjects/browserWindowsPage';
 
 Given('I am on the demoqa homepage', () => {
@@ -22,6 +23,7 @@ Then('I verify the new window contains {string}', (content) => {
 
 Then('I close the new window', () => {
   cy.window().then((win) => {
-    win.close();
+    const newWin = win.open();
+    newWin.close();
   });
 });
