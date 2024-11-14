@@ -1,4 +1,4 @@
-class FormsPage {
+class FormPage {
   clickPracticeForm() {
     cy.contains("Practice Form").click();
   }
@@ -30,4 +30,4 @@ class FormsPage {
   }
 }
 
-export default new FormsPage();
+export default new FormPage();

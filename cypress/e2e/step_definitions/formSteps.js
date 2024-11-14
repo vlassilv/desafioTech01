@@ -1,8 +1,9 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import HomePage from '../page_objects/HomePage';
 import FormPage from '../pageObjects/FormPage';
 
 Given('I am on the demoqa homepage', () => {
-    cy.visit('/');
+    HomePage.visit();
 });
 
 When('I navigate to the Forms section', () => {
