@@ -3,33 +3,33 @@ import HomePage from '../page_objects/HomePage';
 import FormPage from '../pageObjects/FormPage';
 
 Given('I am on the demoqa homepage', () => {
-    HomePage.visit();
+  HomePage.visit();
 });
 
 When('I navigate to the Forms section', () => {
-    FormPage.navigateToFormsSection();
+  FormPage.navigateToFormsSection();
 });
 
 When('I click on Practice Form', () => {
-    FormPage.navigateToPracticeForm();
+  FormPage.navigateToPracticeForm();
 });
 
 When('I fill out the form with random data', () => {
-    FormPage.fillFormWithRandomData();
+  FormPage.fillFormWithRandomData();
 });
 
 When('I upload a .txt file', () => {
-    FormPage.uploadTxtFile();
+  FormPage.uploadTxtFile();
 });
 
 Then('I submit the form', () => {
-    FormPage.submitForm();
+  FormPage.submitForm();
 });
 
 Then('I verify that a popup appears', () => {
-    FormPage.verifyPopupAppears();
+  FormPage.verifyPopupAppears();
 });
 
 Then('I close the popup', () => {
-    FormPage.closePopup();
+  FormPage.closePopup();
 });
