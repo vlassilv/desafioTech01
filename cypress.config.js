@@ -15,8 +15,8 @@ module.exports = defineConfig({
 
       return config;
     },
-    specPattern: 'cypress/e2e/features/**/*.feature',
+    specPattern: 'cypress/e2e/features/**/*.{feature,features}',
     supportFile: 'cypress/support/e2e.js', // Arquivo de suporte com as importações
-    stepDefinitions: path.resolve(__dirname, 'cypress/e2e/step_definitions/**/*.js'),
+    stepDefinitions: path.resolve(__dirname, 'cypress/e2e/stepDefinitions/**/*.js'),
   },
 });

@@ -1,6 +1,6 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import HomePage from '../pageObjects/HomePage';
-import SortablePage from '../support/pageObjects/SortablePage';
+import SortablePage from '../pageObjects/SortablePage';
 
 Given('I am on the demoqa homepage', () => {
   HomePage.visit();
