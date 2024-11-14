@@ -1,8 +1,9 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import WebTablesPage from '../support/pageObjects/webTablesPage';
+import HomePage from "../../page_objects/HomePage";
+import WebTablesPage from '../support/pageObjects/WebTablesPage';
 
 Given('I am on the demoqa homepage', () => {
-  cy.visit('/');
+  HomePage.visit();
 });
 
 When('I navigate to Elements', () => {

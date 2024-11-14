@@ -1,8 +1,9 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import ProgressBarPage from '../support/pageObjects/progressBarPage';
+import HomePage from "../../page_objects/HomePage";
+import ProgressBarPage from '../support/pageObjects/ProgressBarPage';
 
 Given('I am on the demoqa homepage', () => {
-  cy.visit('/');
+  HomePage.visit();
 });
 
 When('I navigate to Widgets', () => {

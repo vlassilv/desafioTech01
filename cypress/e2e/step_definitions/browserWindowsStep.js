@@ -1,24 +1,25 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import browserWindowsPage from '../pageObjects/browserWindowsPage';
+import HomePage from "../../page_objects/HomePage";
+import BrowserWindowsPage from '../pageObjects/BrowserWindowsPage';
 
 Given('I am on the demoqa homepage', () => {
-  cy.visit('/');
+  HomePage.visit();
 });
 
 When('I navigate to Alerts, Frame & Windows', () => {
-  browserWindowsPage.navigateToAlertsFrameWindows();
+  BrowserWindowsPage.navigateToAlertsFrameWindows();
 });
 
 When('I click on Browser Windows', () => {
-  browserWindowsPage.navigateToBrowserWindows();
+  BrowserWindowsPage.navigateToBrowserWindows();
 });
 
 When('I open a new window', () => {
-  browserWindowsPage.openNewWindow();
+  BrowserWindowsPage.openNewWindow();
 });
 
 Then('I verify the new window contains {string}', (content) => {
-  browserWindowsPage.verifyNewWindowContent(content);
+  BrowserWindowsPage.verifyNewWindowContent(content);
 });
 
 Then('I close the new window', () => {
